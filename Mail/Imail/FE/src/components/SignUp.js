@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-import User_Form from './User_Form';
 
 function SignUp() {
     const [formData, setFormData] = useState({});

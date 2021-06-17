@@ -45,6 +45,11 @@ function ListMail(props){
         }));
     }
 
+    const handleLogOut = () => {
+        localStorage.removeItem("userName");
+        window.location.href = 'localhost:3000/login';
+    }
+
     const handleSubmit = async(event) => {
 
         event.preventDefault();
@@ -93,7 +98,7 @@ function ListMail(props){
         <>
             <div id="index_contain" style={{backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.3)),url(/images/a5.jpg)'}}>
                 <header id="header">
-                        <a class="sign_out__" href="/signOut">
+                        <a class="sign_out__" href="#" onClick={handleLogOut}>
                             Sign out
                         </a>
                         <a class="user__" href="#">

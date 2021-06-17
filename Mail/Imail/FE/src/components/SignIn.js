@@ -69,7 +69,7 @@ function SignIn(props) {
                             <input type="submit" value="Submit" class="submit"></input>
                         </div>
                         <div class="account_remain">
-                            <p>Don't have an account? <a href="/signUp"> Sign up</a></p>
+                            <p>Don't have an account? <a href="/sign-up"> Sign up</a></p>
                         </div>
                         <div>
                             <h5> Login with social Media</h5>
