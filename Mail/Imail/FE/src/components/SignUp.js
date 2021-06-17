@@ -1,4 +1,5 @@
 import React,{useState} from 'react';
+import SignUpServices from '../services/signup_services';
 
 function SignUp() {
     const [formData, setFormData] = useState({});
@@ -19,9 +20,7 @@ function SignUp() {
             document.getElementById("signin-wrong").style.display = "block";
         }else{
             document.getElementById("signin-wrong").style.display = "none";
-            const response = await fetch('http://localhost:3001/signUp/?userName='
-            +formData.userName+"&password="+formData.passWord+"&password2="+formData.passWord2
-            ,{method: 'POST',})
+            const response = SignUpServices.signUp__(formData.userName,formData.passWord,formData.passWord2)
             .then(response => response.text() 
             /*document.cookie = "userName = formData.userName";*/)
             .then(contents => {

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import ListMail from '../ListMail';
+import ListMail from './components/ListMail';
 
 function SentPage() {
   return (

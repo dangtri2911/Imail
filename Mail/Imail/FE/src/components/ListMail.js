@@ -5,7 +5,8 @@ import '../css/email.css';
 import '../css/home.css';
 import '../css/navbar.css';
 import '../css/box_chat.css';
-
+import SendMailServices from '../services/sendMail_service';
+import ListMailServices from '../services/list_mail_service';
 
 function ListMail(props){
 
@@ -22,7 +23,7 @@ function ListMail(props){
     const [updateTime, updateEmail] = useState(0);
     
     useEffect(() => {
-        fetch(props.api)
+        ListMailServices.getListMail(props.api)
           .then(response => response.json())
           .then(contents => setData(contents));
 
@@ -31,6 +32,8 @@ function ListMail(props){
             updateEmail(updateTime + 1);
             //alert('rerender');
           }, 120000);
+
+          clearInterval(timer);
           
     }, [updateTime]);
 
@@ -49,7 +52,7 @@ function ListMail(props){
         localStorage.removeItem("userName");
         window.location.href = 'localhost:3000/login';
     }
-
+    // const handleSubmit = SendMailServices.sendMail;
     const handleSubmit = async(event) => {
 
         event.preventDefault();
@@ -57,18 +60,15 @@ function ListMail(props){
         setAlert_danger(null);
         setAlert_info(null);
         
-        const response = await fetch('http://localhost:3001/email/createMail/?userName='
-        +localStorage.getItem("userName")+"&content="+formData.content
-        ,{method: 'POST',})
+        const response = SendMailServices.sendMail(formData.content)
         .then(response => response.text())
         .then(idEmail => {
+            alert("id "+idEmail);
             if (idEmail != "-1" ){
                 //alert(idEmail);
                 var recei =  formData.receiver.split(" ");
                 for (var i = 0; i < recei.length; i++) { 
-                    const res = fetch('http://localhost:3001/email/addReceiver/?email_id='
-                    +idEmail+"&receiver_name="+recei[i]
-                    ,{method: 'POST',})
+                    const res = SendMailServices.addReceiver(idEmail,recei[i])
                     .then(res => res.text())
                     // eslint-disable-next-line no-loop-func
                     .then(contents => {
@@ -77,9 +77,7 @@ function ListMail(props){
                             updateEmail(updateTime+1);
                         }
                         else{
-                            //alert(recei[i] + " receiver");
                             setAlert_danger("Undefined receiver");
-                            //document.getElementById("signup-wrong").style.display = "block"
                         }
                     })
                     // eslint-disable-next-line no-loop-func

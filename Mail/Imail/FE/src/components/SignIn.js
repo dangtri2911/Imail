@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import '../css/login.css';
+import SignInServices from '../services/signin_service';
 
 function SignIn(props) {
     const [formData, setFormData] = useState({});
@@ -17,9 +18,7 @@ function SignIn(props) {
 
         //lert(formData.userName);
         
-        const response = await fetch('http://localhost:3001/signIn/?userName='
-        +formData.userName+"&password="+formData.passWord
-        ,{method: 'POST',})
+        const response = SignInServices.signIn__(formData.userName,formData.passWord)
         .then(response => response.text(), localStorage.setItem("userName", formData.userName) /*document.cookie = "userName = formData.userName";*/)
         .then(contents => {
             if (contents === "true"){

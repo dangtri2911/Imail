@@ -1,13 +1,14 @@
 import React from 'react';
 import { useState, useEffect  } from 'react';
 import { Link } from 'react-router-dom';
+import MailServices from '../services/mail_Service';
 
 function Mail(props) {
     // alert(props.deleted_date);
     const [display, setDisplay] = useState("none");
 
     const handleRead = async(event) => {
-      fetch('http://localhost:3001/mail/readMail/?userName='+localStorage.getItem('userName')+'&mail_read='+props.id)
+      MailServices.readMail(localStorage.getItem('userName'),props.id)
       .then(response => response.text())
       .then(setDisplay("block"))
     }
@@ -16,8 +17,7 @@ function Mail(props) {
 
         //lert(formData.userName);
         
-        const response = await fetch('http://localhost:3001/mail/DeleteMail/?userName='+localStorage.getItem('userName')+'&mail_del='+props.id
-        ,{method: 'POST',})
+        const response = MailServices.deleteMail(localStorage.getItem('userName'),props.id)
         .then(response => response.text())
         .then(contents => {
             if (contents === "true"){
@@ -38,8 +38,7 @@ function Mail(props) {
 
         //lert(formData.userName);
         
-        const response = await fetch('http://localhost:3001/mail/RestoreMail/?userName='+localStorage.getItem('userName')+'&mail_del='+props.id
-        ,{method: 'POST',})
+        const response = MailServices.restoreMail(localStorage.getItem('userName'),props.id)
         .then(response => response.text())
         .then(contents => {
             if (contents === "true"){

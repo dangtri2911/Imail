@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
-import ListMail from '../ListMail';
+import ListMail from './components/ListMail';
 
 function HomePage() {
 
