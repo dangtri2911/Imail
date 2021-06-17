@@ -1,0 +1,60 @@
+.email{
+    display: block;
+    width: 100%;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 5px;
+    height: fit-content;
+    margin-bottom: 10px;
+}
+.unread{
+    background-color: hsl(0, 0%, 85%);
+}
+.sender, .content{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+    height: 30px;
+}
+.sender{
+    font-weight: 700;
+}
+.action_>.far{
+    margin: 0px 5px;
+}
+.action_>.fa-eye{
+    color: hsl(140, 100%, 70%) !important;
+}
+.action_>.fa-trash-restore{
+    color: hsl(180, 100%, 65%) !important;
+}
+.action_>.fa-trash-alt{
+    color: hsl(12, 100%, 60%) !important;
+}
+.action_>.far:hover{
+    transform: scale(1.3);
+}
+.view_mail_contain{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1001;
+}
+.view_mail{
+    display: block;
+    border: 1px solid rgb(104, 99, 99);
+    border-radius: 10px 10px 0 0;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.view_mail_contain textarea{
+    resize: none;
+}
