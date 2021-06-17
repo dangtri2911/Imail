@@ -2,10 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
-import HomePage from './HomePage';
-import UnreadPage from './UnreadPage';
-import SentPage from './SentPage';
-import TrashPage from './TrashPage';
+import HomePage from './Page/HomePage';
+import UnreadPage from './Page/UnreadPage';
+import SentPage from './Page/SentPage';
+import TrashPage from './Page/TrashPage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 

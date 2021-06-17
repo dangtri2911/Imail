@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import ListMail from './components/ListMail';
+import ListMail from '../components/ListMail';
 
 function TrashPage() {
   return (
