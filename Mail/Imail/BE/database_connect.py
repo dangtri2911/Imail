@@ -7,8 +7,12 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from fastapi.security import OAuth2PasswordBearer
 from passlib.context import CryptContext
+import psycopg2
 
-DATABASE_URL = "postgresql://postgres:tri29112001@localhost/demo"
+### 
+DATABASE_URL = "postgresql://postgres:tri29112001@host.docker.internal:5432/demo"
+### 
+# DATABASE_URL = "postgresql://postgres:tri29112001@localhost/demo"
 
 metadata = sqlalchemy.MetaData()
 
@@ -29,6 +33,10 @@ origins = [
     "http://localhost:3000",
     "http://localhost:3001",
 ]
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
 
 app.add_middleware(
     CORSMiddleware,
@@ -61,4 +69,6 @@ def hashPassword(password):
 
 def verifyPassword(passwordInput, passwordDatabase):
     return pwd_context.verify(passwordInput, passwordDatabase)
+
+Base.metadata.create_all(engine)
 
