@@ -32,7 +32,7 @@ async def receiveMail(userName: str):
             if not(i['email_id'] in arrId):
                 arrId.append(i['email_id']) 
         
-        stmt = select([Email,User]).where(and_(Email.id.in_(arrId),Email.sender_id == User.id))
+        stmt = select([Email,User.userName]).where(and_(Email.id.in_(arrId),Email.sender_id == User.id))
         result = con.execute(stmt)      
         listMail = list()
         for i in result:

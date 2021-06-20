@@ -23,7 +23,7 @@ async def getSentMail(userName: str):
     id_recei_ = await database.fetch_one(query)
 
     if id_recei_:
-        stmt = select([Email,User]).where(and_(Email.sender_id == id_recei_['id'],Email.sender_id == User.id))
+        stmt = select([Email,User.userName]).where(and_(Email.sender_id == id_recei_['id'],Email.sender_id == User.id))
         result = con.execute(stmt)
         listMail = list()
         for i in result:

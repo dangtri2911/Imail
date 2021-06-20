@@ -27,6 +27,4 @@ from routers.user_info import updateInfo
 
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
-    uvicorn.run("database_connect:app", host="0.0.0.0", port=3000, reload=True)
-
-# Máy đang lag a oi :>
+    uvicorn.run("database_connect:app", host="localhost", port=3000, reload=True)

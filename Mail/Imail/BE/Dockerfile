@@ -6,15 +6,16 @@ RUN pip install databases
 RUN pip install passlib
 RUN pip install asyncpg
 RUN pip install psycopg2
+RUN pip install bcrypt
 # RUN pip install -r requirements.txt
 
-EXPOSE 80   
+EXPOSE 3000   
 
 COPY ./ ./ 
 COPY ./models ./models
 COPY ./routers ./routers
-COPY ./models/base_models ./models/base_models
+COPY ./models/base_models ./models/base_models      
 
-CMD ["uvicorn", "database_connect:app", "--host", "0.0.0.0", "--port", "3000"]
-# CMD ["python","AppApi.py"]
+# CMD ["uvicorn", "database_connect:app", "--host", "0.0.0.0", "--port", "3000"]
+CMD ["python","AppApi.py"]
 

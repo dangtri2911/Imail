@@ -6,7 +6,7 @@ services:
   db_postgres:
     image: postgres:latest
     # restart: always 
-    container_name: postgres_db_container
+    container_name: postgres_container
     ports:
       - "5432:5432"
 
@@ -14,5 +14,3 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: tri29112001
       POSTGRES_DB: demo
-    
-      // R á a

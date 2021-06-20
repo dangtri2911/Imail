@@ -19,7 +19,7 @@ from database_connect import *
 @app.get('/mail/getUnreadMail/')
 async def getUnReadMail(userName: str):
     con = engine.connect()
-    query = select([User.id]).where(User.userName == userName)
+    query = select([User]).where(User.userName == userName)
     id_curr_ = await database.fetch_one(query)
 
     if id_curr_:
@@ -31,7 +31,7 @@ async def getUnReadMail(userName: str):
             if not(i['email_id'] in arrId):
                 arrId.append(i['email_id'])  
 
-        stmt = select([Email,User]).where(and_(Email.id.in_(arrId),User.id == Email.sender_id))
+        stmt = select([Email,User.userName]).where(and_(Email.id.in_(arrId),User.id == Email.sender_id))
         result = con.execute(stmt)
 
         listMail = list()

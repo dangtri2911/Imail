@@ -38,7 +38,7 @@ async def getNormalMail(userName: str):
             if not(i['receiver_id'] in arrId):
                 arrId.add(i['receiver_id']) 
         
-        stmt = select([Email,User]).where(and_(Email.id.in_(arrId),Email.sender_id == User.id))
+        stmt = select([Email,User.userName]).where(and_(Email.id.in_(arrId),Email.sender_id == User.id))
         result = con.execute(stmt)
         listMail = list()
         for i in result:

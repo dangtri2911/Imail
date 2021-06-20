@@ -25,7 +25,7 @@ async def getDeletedMail(userName: str):
 
     if id_recei_:
         listMail = set()
-        stmt = select([Trash,User]).where(and_(Trash.sender_id == id_recei_['id'], Trash.sender_id == User.id))
+        stmt = select([Trash,User.userName]).where(and_(Trash.sender_id == id_recei_['id'], Trash.sender_id == User.id))
         result = con.execute(stmt)
         for i in result:
             listMail.add(i)

@@ -10,7 +10,9 @@ from passlib.context import CryptContext
 import psycopg2
 
 ### 
-DATABASE_URL = "postgresql://postgres:tri29112001@host.docker.internal:5432/demo"
+DATABASE_URL = "postgresql://postgres:tri29112001@172.18.0.2:5432/demo"
+# DATABASE_URL = "postgresql://postgres:tri29112001@localhost:5432/demo"
+
 ### 
 # DATABASE_URL = "postgresql://postgres:tri29112001@localhost/demo"
 
