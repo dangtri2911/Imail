@@ -16,8 +16,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image for api
       run: docker build --pull --rm -f "Mail/Imail/BE/Dockerfile" -t imail:latest "Mail/Imail/BE"
-    
-    steps:
+
     - uses: actions/checkout@v2
     - name: Build the Docker image for react
       run: docker build --pull --rm -f "Mail/Imail/FE/Dockerfile" -t imail:latest "Mail/Imail/FE"
