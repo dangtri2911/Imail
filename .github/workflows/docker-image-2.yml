@@ -14,6 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    - name: Build the Docker image for api
       run: docker build ./Mail/Imail/BE --file Dockerfile --tag api:$(date +%s)
+    - uses: actions/checkout@v2
+    - name: Build the Docker image for react
       run: docker build ./Mail/Imail/FE --file Dockerfile --tag template:$(date +%s)
